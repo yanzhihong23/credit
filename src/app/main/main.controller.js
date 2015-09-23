@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, $state, $stateParams, $ionicLoading, $location, $ionicActionSheet, $log, OPENID, utils, userService, NonoWebApi, localStorageService) {
+  function MainController($scope, $state, $ionicLoading, $ionicActionSheet, $filter, $log, OPENID, utils, userService, localStorageService) {
     $scope.user = {};
 
     var initSchoolList = function() {
@@ -51,9 +51,30 @@
     };
 
     $scope.submit = function() {
+      if(!$scope.user.validSchool) {
+        utils.alert({
+          content: '学校名称不存在，请再次确认~'
+        });
+        return;
+      }
+
       userService.setUser($scope.user);
       $state.go('line');
     };
+
+    // check whether school in valid
+    $scope.$watch('user.school', function(val) {
+      $scope.user.validSchool = false;
+
+      if(val) {
+        $filter('filter')($scope.schoolList, val).forEach(function(str) {
+          if(str === val) {
+            $scope.user.validSchool = true;
+            return;
+          }
+        })
+      }
+    }, true);
 
     // init
     var user = userService.getUser();

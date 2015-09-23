@@ -7,13 +7,13 @@
 		min-height: 380px;
 		background: #fff;
 		&.circle{
-			background: #fff url(/assets/images/002.png) no-repeat center 70%;
+			background: #fff url(../assets/images/002.png) no-repeat center 70%;
 			background-size: 250px;
 		}
 		.logo{
 			font-size: 18px;
 	    font-family: "Lantinghei SC";
-	    background: url(/assets/images/logo.png) no-repeat center;
+	    background: url(../assets/images/logo.png) no-repeat center;
 	    background-size: 65%;
 	    height: 90px;
 	    position: absolute;
