@@ -1,0 +1,17 @@
+.relative{
+	position: relative;
+}
+
+.bottom{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+}
+
+@media only screen 
+and (max-device-width : 320px) 
+and (max-device-height : 480px) { // iphone 4
+	.bottom{
+		position: relative;
+	}
+}

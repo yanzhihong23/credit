@@ -1,0 +1,25 @@
+<ion-view cache-view="false">
+  <ion-content>
+		<img src="assets/images/006.png" width="100%" alt="">
+		
+		<section class="dbl-margin">
+			<form name="schoolForm" ng-submit="submit()">
+				<auto-complete options="schoolList" ng-model="user.school" label="学校" placeholder="请输入学校名称"></auto-complete>
+
+				<ion-item class="item-input item-arrow-down dbl-margin-top zero-z-index">
+					<span class="input-label">学历</span>
+					<input type="text" placeholder="请选择学历" ng-model="user.degree" ng-click="selectDegree()" readonly required>
+				</ion-item>
+
+				<div class="dbl-padding"></div>
+
+				<button class="button button-block button-assertive bold" ng-disabled="schoolForm.$invalid">点击查看</button>
+			</form>
+		</section>
+
+		<section bottom>
+			<slogan></slogan>
+		</section>
+		
+  </ion-content>
+</ion-view>

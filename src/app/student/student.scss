@@ -1,0 +1,36 @@
+.item-gray .item{
+	border: 0;
+	background: #f8f8f8;
+	input[readonly]{
+		background: #f8f8f8;
+	}
+}
+
+#student{
+	.button.submit{
+		padding-left: 40px;
+		padding-right: 40px;
+		border-radius: 23px;
+	}
+	.item{
+		input{
+			color: $positive;
+		}
+	}
+}
+
+@media only screen 
+and (min-device-height : 600px) {
+	#student{
+		.scroll{
+			position: relative;
+			height: 100%;
+		}
+		.slogan{
+			position: absolute;
+			width: 100%;
+			bottom: 30px;
+			left: 0;
+		}
+	}
+}

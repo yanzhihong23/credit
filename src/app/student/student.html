@@ -1,0 +1,51 @@
+<ion-view id="student">
+	<ion-content>
+		<form name="authForm" ng-submit="submit()">
+			<section class="card padding-bottom">
+				<div class="text-center dbl-padding-top fs-18 gray">完善信息，开启额度提升</div>
+				<div class="padding fs-xs gray text-center"><span class="energized">名校贷</span>承诺确保你的信息安全</div>
+				<section class="dbl-margin-horizontal item-gray">
+					<div class="item item-input">
+						<span class="input-label">姓名</span>
+						<input type="text" placeholder="请输入姓名" ng-model="user.realname" required>
+					</div>
+					<div class="item item-input margin-top">
+						<span class="input-label">身份证</span>
+						<input type="text" placeholder="请输入身份证" ng-model="user.idNo"  ng-pattern="/^[\s\S]{4,18}$/" maxlength="18" id-number required>
+					</div>
+
+					<div class="item item-input margin-top">
+						<span class="input-label">学校</span>
+						<input type="text" placeholder="" ng-model="user.school" readonly required>
+					</div>
+
+					<div class="item item-input margin-top">
+						<span class="input-label">学历</span>
+						<input type="text" placeholder="请选择学历" ng-model="user.degree"  readonly required>
+					</div>
+					<div class="item item-input item-arrow-down margin-top">
+						<span class="input-label">入学年份</span>
+						<input type="text" placeholder="请选择入学年份" ng-model="user.year" ng-click="selectYear()" readonly required>
+					</div>
+					<div class="item item-input margin-top">
+						<span class="input-label">手机</span>
+						<input type="tel" placeholder="请输入手机号码" ng-model="user.phone" required>
+					</div>
+					<div class="send-vcode margin-vertical">
+						<div class="item item-input">
+							<input type="text" ng-model="user.vcode" ng-pattern="/^[\s\S]{4,6}$/" placeholder="请输入验证码" maxlength="6" required>
+						</div>
+						<button type="button" class="button button-block button-positive no-margin fs-sm" ng-disabled="resendCountdown || !user.phone" ng-click="sendVcode()">
+							<span ng-show="resendCountdown">{{resendCountdown}}秒后重新发送</span>
+							<span ng-hide="resendCountdown">发送验证码</span>
+						</button>
+					</div>
+				</section>
+			</section>
+
+			<div class="dbl-margin text-center">
+				<button class="button button-assertive submit" ng-disabled="authForm.$invalid">获取最终额度 >></button>
+			</div>
+		</form>
+	</ion-content>
+</ion-view>

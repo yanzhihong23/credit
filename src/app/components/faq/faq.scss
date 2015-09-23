@@ -1,0 +1,25 @@
+.faq-modal{
+	padding: 10px;
+	width: 92%;
+	left: 4%;
+	min-height: 80%;
+	height: 94%;
+	top: 3%;
+	border-radius: 6px;
+	overflow-x: visible;
+	overflow-y: scroll;
+	.has-footer{
+		bottom: 90px;
+	}
+	.bar-footer{
+		align-items: center;
+		justify-content: center;
+		height: 90px;
+		.button{
+			width: 180px;
+			height: 48px;
+			font-size: 16px;
+			font-weight: bold;
+		}
+	}
+}

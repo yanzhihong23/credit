@@ -1,0 +1,31 @@
+<ion-view id="line">
+  <ion-content>
+  	<ion-slide-box on-slide-changed="slideHasChanged($index)">
+  	  <ion-slide>
+  	    <section class="main circle text-center">
+    	  	<div class="logo"></div>
+    	  	<div class="amount">{{user.line || 5000}}</div>
+    	  	<div class="desc">可用额度</div>
+    	  	<faq></faq>
+    	  	<a class="button button-block button-stable fs-xs">月息<span class="assertive">0.99%</span> 5秒钟闪电到账 >></a>
+    	  </section>
+  	  </ion-slide>
+  	  <ion-slide>
+  	    <section class="main">
+  	    	<pentagon></pentagon>
+  	    	<faq class="pentagon"></faq>
+  	    	<div class="validity text-center">请在<span class="energized">6个月</span>内使用，<span class="energized">6个月</span>后视为自动放弃</div>
+  	    </section>
+  	  </ion-slide>
+  	</ion-slide-box>
+
+		<section class="dbl-margin text-center">
+			<a class="button button-assertive button-round bold" ng-href="{{download}}">我要提现 >></a>
+		</section>
+  
+
+  	<section bottom>
+  		<slogan></slogan>
+  	</section>
+  </ion-content>
+</ion-view>
