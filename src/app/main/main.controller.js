@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, $state, $ionicLoading, $ionicActionSheet, $filter, $log, OPENID, utils, userService, localStorageService) {
+  function MainController($scope, $state, $ionicLoading, $ionicActionSheet, $filter, $log, OPENID, utils, userService, NonoWebApi, localStorageService) {
     $scope.user = {};
 
     var initSchoolList = function() {
