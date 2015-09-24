@@ -4,7 +4,7 @@
   angular
     .module('credit')
     .constant('HOST', 'http://openapi.test.nonobank.com')
-    .constant('MERCHANT', '10002')
+    .constant('MERCHANT', '1291795')
     .constant('PRODUCTID', '90')
     .factory('OPENID', function($location, utils, $log) {
       $log.debug('factory');
