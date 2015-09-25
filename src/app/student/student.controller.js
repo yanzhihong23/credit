@@ -10,6 +10,38 @@
   	$scope.user = userService.getUser() || {};
     var resendCountdown = utils.resendCountdown($scope);
 
+    var initSchoolList = function() {
+      $scope.schoolList = localStorageService.get('schoolList') || [];
+      if(!$scope.schoolList.length) {
+        NonoWebApi.getSchoolList().success(function(data) {
+          if(+data.result === 1) {
+            data.list.map(function(obj) {
+              $scope.schoolList.push(obj.name);
+            });
+
+            localStorageService.add('schoolList', $scope.schoolList);
+            $log.debug($scope.schoolList);
+          }
+        });
+      }
+    };
+
+    initSchoolList();
+
+    // check whether school in valid
+    $scope.$watch('user.school', function(val) {
+      $scope.user.validSchool = false;
+
+      if(val) {
+        $filter('filter')($scope.schoolList, val).forEach(function(str) {
+          if(str === val) {
+            $scope.user.validSchool = true;
+            return;
+          }
+        })
+      }
+    }, true);
+
     $scope.selectYear = function() {
     	var buttons = [
     		{ text: '2015' },
@@ -73,6 +105,13 @@
     };
 
     $scope.submit = function() {
+      if(!$scope.user.validSchool) {
+        utils.alert({
+          content: '学校名称不存在，请再次确认~'
+        });
+        return;
+      }
+
     	$ionicLoading.show();
 
     	NonoWebApi.creditApply($scope.user)
