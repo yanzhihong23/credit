@@ -29,7 +29,7 @@
 					</div>
 					<div class="item item-input margin-top">
 						<span class="input-label">手机</span>
-						<input type="tel" placeholder="请输入手机号码" ng-model="user.phone" required>
+						<input type="tel" placeholder="请输入手机号码" ng-model="user.phone" ng-pattern="/^[0-9]{11}$/" maxlength="11" required>
 					</div>
 					<div class="send-vcode margin-vertical">
 						<div class="item item-input">
