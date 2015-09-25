@@ -14,15 +14,23 @@
     // $httpProvider.defaults.useXDomain = true;
     // delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
-    $httpProvider.interceptors.push(function($rootScope) {
+    $httpProvider.interceptors.push(function($rootScope, $q, $log) {
       return {
         request: function(config) {
           return config;
         },
         response: function(response) {
-          $rootScope.$broadcast('loading:hide')
+          $rootScope.$broadcast('loading:hide');
           return response;
-        }
+        },
+        responseError: function(rejection) {
+          // do something on error
+          if(rejection.status === 404) {
+            $rootScope.$broadcast('loading:hide');
+            $log.error('404 error');
+          }
+          return $q.reject(rejection);
+         }
       }
     });
 
