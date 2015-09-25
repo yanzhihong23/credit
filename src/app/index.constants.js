@@ -5,7 +5,6 @@
     .module('credit')
     .constant('HOST', 'http://openapi.test.nonobank.com')
     .constant('MERCHANT', '1291795')
-    .constant('PRODUCTID', '90')
     .factory('OPENID', function($location, utils, $log) {
       $log.debug('factory');
       var search = utils.getLocationSearch(),
@@ -16,7 +15,6 @@
     .factory('APISERVER', function(HOST, $location) {
     	var host = /nonobank.com/.test($location.host()) ? $location.protocol() + '://' + $location.host() + ($location.port() ? ':' + $location.port() : '') : HOST;
     	return {
-    		MSAPI: host + '/msapi',
     		NONOWEB: host + '/nono-web'
     	};
     })

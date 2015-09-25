@@ -6,7 +6,7 @@
     .service('NonoWebApi', NonoWebApi);
 
   /** @ngInject */
-  function NonoWebApi($http, md5, utils, APISERVER, OPENID, MERCHANT, PRODUCTID, $log) {
+  function NonoWebApi($http, md5, utils, APISERVER, OPENID, MERCHANT, $log) {
   	var v = 'm.nonobank.com/msapi/' + moment().format('YYYY-MM-DD HH') + Math.floor(moment().minute()/5),
   			vMd5 = md5.createHash(v),
   			headers = {'Authorization': vMd5,'Content-Type': 'application/x-www-form-urlencoded'};
@@ -30,12 +30,10 @@
         url: APISERVER.NONOWEB + '/commLoanApply/getSmsCode',
         headers: headers,
         data: utils.param({
-          // request: JSON.stringify({
-            openId: OPENID,
-            merchant: MERCHANT,
-            mobile: obj.phone,
-            msgKey: md5.createHash(MERCHANT + OPENID)
-          // })
+          openId: OPENID,
+          merchant: MERCHANT,
+          mobile: obj.phone,
+          msgKey: md5.createHash(MERCHANT + OPENID)
         })
       });
     };
@@ -57,20 +55,18 @@
         url: APISERVER.NONOWEB + '/commLoanApply/creditApply',
         headers: headers,
         data: utils.param({
-          // request: JSON.stringify({
-            openId: OPENID,
-            merchant: MERCHANT,
-            realName: obj.realname,
-            idNum: obj.idNo,
-            academy: obj.school,
-            education: obj.degree,
-            eduStartYear: obj.year,
-            mobile: obj.phone,
-            validation: obj.vcode,
-            sessionId: obj.sessionId,
-            approach: obj.approach,
-            msgKey: md5.createHash(MERCHANT + OPENID + obj.phone + obj.idNo)
-          // })
+          openId: OPENID,
+          merchant: MERCHANT,
+          realName: obj.realname,
+          idNum: obj.idNo,
+          academy: obj.school,
+          education: obj.degree,
+          eduStartYear: obj.year,
+          mobile: obj.phone,
+          validation: obj.vcode,
+          sessionId: obj.sessionId,
+          approach: obj.approach,
+          msgKey: md5.createHash(MERCHANT + OPENID + obj.phone + obj.idNo)
         })
       });
     };

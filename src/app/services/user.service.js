@@ -6,7 +6,7 @@
     .service('userService', userService);
 
     /** @ngInject */
-    function userService(localStorageService, MSApi, OPENID, $timeout, $log) {
+    function userService(localStorageService, OPENID) {
       var self = this, USER = 'user_' + OPENID;
 
       this.setUser = function(user) {
