@@ -94,3 +94,10 @@
 	padding-left: 30px;
 	padding-right: 30px;
 }
+
+@media only screen 
+and (max-device-height : 568px) {
+	#line .bottom{
+		position: relative;
+	}
+}
