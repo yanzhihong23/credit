@@ -29,7 +29,9 @@
     initSchoolList();
 
     // check whether school in valid
-    $scope.$watch('user.school', function(val) {
+    $scope.$watch('user.school', function(val, old) {
+      if(val === old) return;
+
       $scope.user.validSchool = false;
 
       if(val) {
